@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
+
+Route::get('login', 'AuthController@login');
+Route::post('login', 'AuthController@login_auth');
+
+Route::resource('items', 'CManageItems');
 
 Route::get('/quotation', function () {
     return view('quotation');
