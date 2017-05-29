@@ -15,7 +15,8 @@ class CCreateQuotation extends Controller
      */
     public function index()
     {
-        //
+        $item = MItems::get();
+        return view('quotation.create', ['item' => $item]);
     }
 
     /**

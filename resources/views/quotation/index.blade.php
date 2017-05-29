@@ -52,49 +52,64 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
-            <h4><i class="fa fa-university"></i> Daftar Barang</h4><hr>
+            <h4><i class="fa fa-university"></i> Daftar Quotation</h4><hr>
             <div class=row><div class="col-md-6">
-              <a href="/items/create" class="btn btn-primary">
+              <a href="/dosen/create" class="btn btn-primary">
               <i class="fa fa-plus-circle"></i> Tambah</a>
             </div><div class="col-md-2"></div><div class="col-md-4">            </div></div><br>
-        @if($items->count())
+        @if($quotation->count())
         <div class="table-responsive">
         <table class="table table-bordered table-striped
                       table-hover table-condensed tfix">
         <thead align="center">
         <tr><td><b>ID</b></td>
-            <td><b>Nama barang</b></td>
-            <td><b>Harga</b></td>
-            <td><b>Stok</b></td>
+            <td><b>Nama Quotation</b></td>
+            <td><b>Nama Perusahaan</b></td>
             <td colspan="2"><b>MENU</b></td></tr>
         </thead>
-        @foreach($items as $m)
+        @foreach($quotation as $m)
         <tr>
           <td>{{ $m->id }}</td>
-          <td>{{ $m->nama_barang }}</td>
-          <td>{{ $m->harga }}</td>
-          <td>{{ $m->stock }}</td>
+          <td>{{ $m->nama_quotation }}</td>
+          <td>{{ $m->nama_perusahaan }}</td>
         <td align="center" width="30px">
-        <a href="/items/{{$m->id}}/edit" class="btn btn-warning btn-sm"
-        role="button"><i class="fa fa-pencil-square"></i> Edit</a></td>
         <td align="center" width="30px">
-        {!! Form::open(array('route' => array('items.destroy', $m->nip),
-                             'method' => 'delete',
-                             'style' => 'display:inline')) !!}
-        <button class='btn btn-sm btn-danger delete-btn' type='submit'>
-        <i class='fa fa-times-circle'></i> Delete </button>
-        {!! Form::close() !!}
+          <a href="#Modal{{ $m->id }}" data-toggle="modal" class="btn btn-primary"></a>
         </td>
-         </tr>
+				</tr>
+
+					<div class="modal fade" id="Modal{{ $m->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">Detail Quotation</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<img src="img/quote.jpg" style="">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cetak</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
         @endforeach
         </table>
         </div>
         @else
          <div class="alert alert-warning">
-         <i class="fa fa-exclamation-triangle"></i> Data Barang tidak Ada
+         <i class="fa fa-exclamation-triangle"></i> Data Dosen tidak Ada
           </div>
         @endif
-        </div></div>
+</div></div>
+
+
+
         <div class="alert alert-panel" style="back">
 					<h3>Perlengkapan Berbagai Alat Kesehatan</h3>
 				</div>

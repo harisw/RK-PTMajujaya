@@ -42,11 +42,9 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
 								<li><a href="items">Items</a></li>
-								<li><a href="#">Tentang Kami</a></li>
-								<li><a href="#">Kontak Kami</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="{{ url('/login') }}">Masuk</a></li>
+								<li><a href="delivery_order">Delivery Order</a></li>
+								<li><a href="quotation">Quotation</a></li>
+                <li><a href="payment_receipt">Payment Receipt</a></li>
 							</ul>
 						</div>
 					</div>

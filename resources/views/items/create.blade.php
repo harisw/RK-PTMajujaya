@@ -41,44 +41,45 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
-								<li><a href="#">Produk Kami</a></li>
-								<li><a href="#">Tentang Kami</a></li>
-								<li><a href="#">Kontak Kami</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="{{ url('/login') }}">Masuk</a></li>
+								<li><a href="items">Items</a></li>
+								<li><a href="delivery_order">Delivery Order</a></li>
+								<li><a href="quotation">Quotation</a></li>
+                <li><a href="payment_receipt">Payment Receipt</a></li>
 							</ul>
 						</div>
 					</div>
 				</nav>
 
-				<div class="row">
-				  <div class="col-md-10">
-				    {!! Form::open(array('url' => '/login')) !!}
+        <div class="row">
+          <div class="col-md-10">
+            {!! Form::open(array('url' => '/items')) !!}
             <div class="form-group">
-              {!! Form::label('nama_user', 'Nama Username') !!}
-              {!! Form::text('nama_user', null, array('class' => 'form-control', 'placeholder'=>'Nama Username')) !!}
+              {!! Form::label('nama_barang', 'Nama Barang') !!}
+              {!! Form::text('nama_barang', null, array('class' => 'form-control', 'placeholder'=>'Nama Barang')) !!}
             </div>
             <div class="form-group">
-              {!! Form::label('pass_user', 'Password anda') !!}
-              {!! Form::password('pass_user', null, array('class' => 'form-control', 'placeholder'=>'Password anda')) !!}
+              {!! Form::label('harga', 'Harga Barang') !!}
+              {!! Form::number('harga', null, array('class' => 'form-control', 'placeholder'=>'Harga Barang')) !!}
+            </div>
+            <div class="form-group">
+              {!! Form::label('stock', 'Stok Barang') !!}
+              {!! Form::number('stock', null, array('class' => 'form-control', 'placeholder' => 'Stok Barang')) !!}
             </div>
             {!! Form::button('<i class="fa fa-plus-square"></i>'.
                 ' Simpan', array('type' => 'submit', 'class'
                  => 'btn btn-primary'))!!}
-				  </div>
-				</div>
+          </div>
+        </div>
+        <div class="alert alert-panel" style="back">
+          <h3>Perlengkapan Berbagai Alat Kesehatan</h3>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
 
-				<div class="alert alert-panel" style="back">
-					<h3>Perlengkapan Berbagai Alat Kesehatan</h3>
-				</div>
-			</div>
-			<div class="col-md-1"></div>
-		</div>
-	</div>
 
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
