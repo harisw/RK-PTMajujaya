@@ -20,6 +20,7 @@ Route::resource('items', 'CManageItems');
 
 Route::get('/quotation', 'HomeController@quotation');
 Route::get('/quotation/create', 'CCreateQuotation@index');
+Route::post('/quotation', 'CCreateQuotation@store');
 
 Route::get('/payment_receipt', function () {
     return view('payment_receipt');

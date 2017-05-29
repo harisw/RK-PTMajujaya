@@ -54,7 +54,7 @@
           <div class="panel-body">
             <h4><i class="fa fa-university"></i> Daftar Quotation</h4><hr>
             <div class=row><div class="col-md-6">
-              <a href="/dosen/create" class="btn btn-primary">
+              <a href="/quotation/create" class="btn btn-primary">
               <i class="fa fa-plus-circle"></i> Tambah</a>
             </div><div class="col-md-2"></div><div class="col-md-4">            </div></div><br>
         @if($quotation->count())

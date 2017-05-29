@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\MQuotation;
 use App\MItems;
-
+use App\ListBarang;
 class CCreateQuotation extends Controller
 {
     /**
@@ -26,7 +26,7 @@ class CCreateQuotation extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +37,20 @@ class CCreateQuotation extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $quotation = MQuotation::insertGetId(array(
+        'nama_perusahaan' => $request->get('nama_perusahaan'),
+        'nama_quotation' => $request->get('nama_quotation')
+      ));
+      $item = MItems::get();
+      foreach($item as $i){
+        if($request->get('barang'.$i->id)){
+          ListBarang::insert([
+            'barang_id' => $i->id,
+            'quotation_id' => $quotation
+          ]);
+        }
+      }
+      return redirect('/quotation');
     }
 
     /**
