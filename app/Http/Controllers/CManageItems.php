@@ -12,9 +12,10 @@ class CManageItems extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
         $items = MItems::get();
+		
         return view('items.index', ['items' => $items ]);
     }
 
@@ -37,6 +38,7 @@ class CManageItems extends Controller
     public function store(Request $request)
     {
         $create = MItems::create($request->all());
+		$request->session()->flash('status_t_barang','Data barang berhasil ditambah');
         return redirect('/items');
     }
 
@@ -57,9 +59,10 @@ class CManageItems extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_barang)
+    public function edit(Request $req, $id_barang)
     {
         $item = MItems::where('id_barang', '=', $id_barang)->get();
+		
         return view('items.edit', compact('item'));
     }
 
@@ -77,6 +80,7 @@ class CManageItems extends Controller
                                   'harga' => $request->get('harga'),
                                   'stock' => $request->get('stock')]);
         //$item->update($request->all());
+		$request->session()->flash('status_t_barang','Data barang berhasil diupdate');
         return redirect('/items');
     }
 

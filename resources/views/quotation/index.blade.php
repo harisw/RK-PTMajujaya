@@ -41,10 +41,11 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
-								<li><a href="items">Items</a></li>
-								<li><a href="delivery_order">Delivery Order</a></li>
-								<li><a href="quotation">Quotation</a></li>
+								<li><a href="{{url('/')}}/items">Items</a></li>
+								<li><a href="{{url('/')}}/delivery_order">Delivery Order</a></li>
+								<li><a href="{{url('/')}}/quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
+								<li><a href="{{url('/')}}/proof_item">Proof of Item Receipt</a></li>
 							</ul>
 						</div>
 					</div>
@@ -52,6 +53,11 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
+			  @if(session('status_quotation'))
+				<div class="alert alert-success">
+  				{{session('status_quotation')}}
+				</div>
+				@endif
             <h4><i class="fa fa-university"></i> Daftar Quotation</h4><hr>
             <div class=row><div class="col-md-6">
               <a href="/quotation/create" class="btn btn-primary">
@@ -75,7 +81,7 @@
           <td>{{ $m->nama_quotation }}</td>
           <td>{{ $m->nama_perusahaan }}</td>
         	<td align="center" >
-          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Lihat</a>
+          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Cetak</a>
         	</td>
 				</tr>
 
@@ -96,16 +102,16 @@
 			<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Dokumen Quotation</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-
+				<div id="pr{{ $m->id_quotation }}">
 			<!-- <div class="panel-body"> -->
 				<!-- info row -->
-				<div class="row invoice-info">
+				<div class="row invoice-info" id="">
 					<div class="col-sm-4 invoice-col">
 						Dari
 						<address>
@@ -197,15 +203,17 @@
 					</div>
 					<!-- /.col -->
 				</div>
+					</div>
 				<!-- /.row -->
 				<div class="row no-print">
 					<div class="col-md-12 text-right">
-					<button type="button" onClick="printDiv('Modal{{ $m->id_quotation }}')" class="btn btn-default pull-left"/><i class="fa fa-print"></i> Cetak</button></a>
+					<button type="button" onClick="printDiv('pr{{ $m->id_quotation }}')" class="btn btn-default pull-left"/><i class="fa fa-print"></i> Cetak</button></a>
 					</div>
 				</div>
 			<!-- </div> -->
 			<!-- /. panel body -->
-		</div>
+		
+				</div>
 			</div>
 		</div>
 		</div>

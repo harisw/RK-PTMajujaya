@@ -46,7 +46,6 @@
 								<li><a href="{{url('/')}}/quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
 								<li><a href="{{url('/')}}/proof_item">Proof of Item Receipt</a></li>
-
 							</ul>
 						</div>
 					</div>
@@ -54,7 +53,7 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
-            <h4><i class="fa fa-university"></i> Buat Payment Receipt</h4><hr>
+            <h4><i class="fa fa-university"></i> Buat Delivery Order</h4><hr>
             <div class=row><div class="col-md-6">
 <!--
               <a href="/quotation/create" class="btn btn-primary">
@@ -79,7 +78,7 @@
           <td>{{ $m->nama_quotation }}</td>
           <td>{{ $m->nama_perusahaan }}</td>
         	<td align="center" >
-          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Buat Payment Receipt</a>
+          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Buat Delivery Order</a>
         	</td>
 				</tr>
 
@@ -95,51 +94,48 @@
 		<!-- MODAL START -->
 		@foreach($quotation as $m)
 		<div class="modal fade" id="Modal{{$m->id_quotation}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Payment Receipt</h4>
+        <h4 class="modal-title" id="myModalLabel">Delivery Order</h4>
       </div>
       <div class="modal-body">
-        <div class="row">
-			<div class="alert alert-success">
+		  <div class="alert alert-success">
   				Payment Receipt sukses dibuat
 				</div>
-        <div class="well" style="background-color: #fff; border-radius: 0; border: none; -webkit-box-shadow:none;" id="pr{{$m->id_quotation}}">
+        <div class="row" id="pr{{$m->id_quotation}}">
+        <div class="well" style="background-color: #fff; border-radius: 0; border: none; -webkit-box-shadow:none;">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
+					Dari:<br>
                     <address>
                         <strong>PT Maju Jaya</strong>
                         <br>
-                        Jl. Keputih No. 35
+                        Jalan Surabaya Selatan No 90
                         <br>
-                        Sukolilo, CA 90026
-                        <br>
-                        <abbr title="Phone">P:</abbr> (+62)85709802870
+                        <abbr title="Phone"></abbr> (+62)85709802870
                     </address>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                    <p>
-                        <em>Date: {{date("d-m-Y")}}</em>
-                    </p>
-                    <p>
-                        <em>Receipt #: 34522677W</em>
-                    </p>
+					Kepada: <br>
+                    <address>
+						<strong>{{$m->nama_perusahaan}}</strong>
+					</address>
                 </div>
             </div>
 
             <div class="row">
                 <div class="text-center">
-                    <h1>Receipt</h1>
+                    <h2>Delivery Order</h2>
+                    
                 </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>#</th>
-                            <th class="text-center">Price</th>
-                            <th class="text-center">Total</th>
+                            <th>Nama Barang</th>
+                            <th class="text-center">Kuantitas</th>
+                            <th class="text-center"><span class="glyphicon glyphicon-ok"></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -147,36 +143,13 @@
                         <tr>
                             <td class="col-md-9"><em>{{$v->nama_barang}}</em></td>
                             <td class="col-md-1" style="text-align: center"> {{$v->jumlah_barang}} </td>
-                            <td class="col-md-1 text-center">Rp{{$v->harga}}</td>
-                            <td class="col-md-1 text-center">Rp{{$v->subtotal}}</td>
+                            <td class="col-md-2 text-center"></td>
                         </tr>
 											@endforeach
-
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td class="text-right">
-                                <p>
-                                    <strong>Subtotal: </strong>
-                                </p>
-                                <p>
-                                    <strong>Tax: </strong>
-                                </p>
-                            </td>
-                            <td class="text-center">
-                                <p>
-                                    <strong>Rp{{$m->total_harga}}</strong>
-                                </p>
-                                <p>
-                                    <strong>Rp 0</strong>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                            <td class="text-center text-danger"><h4><strong>Rp{{$m->total_harga}}</strong></h4></td>
+                         <tr>
+                            <td class="col-md-4"> </td>
+                            <td  class="col-md-5"><h6><strong>Tanggal {{date("Y/m/d")}}</strong></h6></td>
+                            <td  class="col-md-3"><h6></h6></td>
                         </tr>
                     </tbody>
                 </table>
@@ -187,7 +160,7 @@
       </div>
       <div class="modal-footer">
         
-        <button type="button" onClick="printDiv('pr{{$m->id_quotation}}')" class="btn btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Cetak</button>
+        <button type="button" class="btn btn-primary" onclick="printDiv('pr{{$m->id_quotation}}')"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Cetak</button>
       </div>
     </div>
   </div>

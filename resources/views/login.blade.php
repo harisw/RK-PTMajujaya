@@ -61,10 +61,10 @@
             </div>
             <div class="form-group">
               {!! Form::label('pass_user', 'Password anda') !!}
-              {!! Form::password('pass_user', null, array('class' => 'form-control', 'placeholder'=>'Password anda')) !!}
+              {!! Form::password('pass_user', array('class' => 'form-control', 'placeholder'=>'Password anda')) !!}
             </div>
             {!! Form::button('<i class="fa fa-plus-square"></i>'.
-                ' Simpan', array('type' => 'submit', 'class'
+                ' Masuk', array('type' => 'submit', 'class'
                  => 'btn btn-primary'))!!}
 				  </div>
 				</div>

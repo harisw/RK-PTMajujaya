@@ -25,6 +25,4 @@ Route::post('/quotation', 'CCreateQuotation@store');
 Route::get('/payment_receipt', 'CCreatePaymentofReceipt@index');
 Route::get('/proof_item', 'CCreateProofItemReceipt@index');
 
-Route::get('/delivery_order', function () {
-    return view('delivery_order');
-});
+Route::get('/delivery_order', 'CCreateDeliveryOrder@index');

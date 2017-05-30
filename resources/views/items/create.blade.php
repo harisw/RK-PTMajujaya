@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PT. Maju Jaya | Selling Medical Equipment</title>
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	<link href="{{url('/')}}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{url('/')}}/css/style.css" rel="stylesheet">
 	<style>
 		.alert-panel {
 			color: #aa0000;
@@ -25,7 +25,7 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<a class="navbar-brand" href="#">
-								<img alt="Brand" src="img/maju-jaya.jpg" style="height: 60px; margin-top: -10px;">
+								<img alt="Brand" src="{{url('/')}}/img/maju-jaya.jpg" style="height: 60px; margin-top: -10px;">
 							</a>
 						</div>
 						<div class="navbar-header navbar-right" style="margin-top: -10px;">
@@ -40,10 +40,10 @@
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li><a href="#">Home</a></li>
-								<li><a href="items">Items</a></li>
-								<li><a href="delivery_order">Delivery Order</a></li>
-								<li><a href="quotation">Quotation</a></li>
+								<li><a href="{{url('/')}}">Home</a></li>
+								<li><a href="{{url('/')}}/items">Items</a></li>
+								<li><a href="{{url('/')}}/delivery_order">Delivery Order</a></li>
+								<li><a href="{{url('/')}}/quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
 							</ul>
 						</div>
@@ -66,7 +66,7 @@
               {!! Form::number('stock', null, array('class' => 'form-control', 'placeholder' => 'Stok Barang')) !!}
             </div>
             {!! Form::button('<i class="fa fa-plus-square"></i>'.
-                ' Simpan', array('type' => 'submit', 'class'
+                ' Tambah', array('type' => 'submit', 'class'
                  => 'btn btn-primary'))!!}
           </div>
         </div>
@@ -80,6 +80,6 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="{{url('/')}}/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PT. Maju Jaya | Selling Medical Equipment</title>
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	<link href="{{url('/')}}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{url('/')}}/css/style.css" rel="stylesheet">
 	<style>
 		.alert-panel {
 			color: #aa0000;
@@ -25,7 +25,7 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<a class="navbar-brand" href="#">
-								<img alt="Brand" src="img/maju-jaya.jpg" style="height: 60px; margin-top: -10px;">
+								<img alt="Brand" src="{{url('/')}}/img/maju-jaya.jpg" style="height: 60px; margin-top: -10px;">
 							</a>
 						</div>
 						<div class="navbar-header navbar-right" style="margin-top: -10px;">
@@ -70,7 +70,7 @@
             @endforeach
 
             {!! Form::button('<i class="fa fa-plus-square"></i>'.
-                ' Simpan', array('type' => 'submit', 'class'
+                ' Buat Quotation', array('type' => 'submit', 'class'
                  => 'btn btn-primary'))!!}
           </div>
         </div>
@@ -84,6 +84,6 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="{{url('/')}}/js/bootstrap.min.js"></script>
 </body>
 </html>

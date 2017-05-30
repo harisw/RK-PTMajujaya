@@ -41,11 +41,11 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
-								<li><a href="items">Items</a></li>
-								<li><a href="delivery_order">Delivery Order</a></li>
-								<li><a href="quotation">Quotation</a></li>
+								<li><a href="{{url('/')}}/items">Items</a></li>
+								<li><a href="{{url('/')}}/delivery_order">Delivery Order</a></li>
+								<li><a href="{{url('/')}}/quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
-								<li><a href="proof_item">Buat Proof of Item Receipt</a></li>
+								<li><a href="{{url('/')}}/proof_item">Proof of Item Receipt</a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,8 +55,10 @@
           <div class="panel-body">
             <h4><i class="fa fa-university"></i> Buat Proof of Item Receipt</h4><hr>
             <div class=row><div class="col-md-6">
+<!--
               <a href="/quotation/create" class="btn btn-primary">
               <i class="fa fa-plus-circle"></i> Tambah</a>
+-->
             </div><div class="col-md-2"></div><div class="col-md-4">            </div></div><br>
 
         <div class="table-responsive">
@@ -76,7 +78,7 @@
           <td>{{ $m->nama_quotation }}</td>
           <td>{{ $m->nama_perusahaan }}</td>
         	<td align="center" >
-          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Lihat</a>
+          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Buat Proof of Item Receipt</a>
         	</td>
 				</tr>
 
@@ -99,7 +101,10 @@
         <h4 class="modal-title" id="myModalLabel">Proof Of Item Receipt</h4>
       </div>
       <div class="modal-body">
-        <div class="row">
+		  <div class="alert alert-success">
+  				Payment Receipt sukses dibuat
+				</div>
+        <div class="row" id="pr{{$m->id_quotation}}">
         <div class="well" style="background-color: #fff; border-radius: 0; border: none; -webkit-box-shadow:none;">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -152,8 +157,8 @@
     </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="printDiv('Modal{{$m->id_quotation}}')"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+        
+        <button type="button" class="btn btn-primary" onclick="printDiv('pr{{$m->id_quotation}}')"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Cetak</button>
       </div>
     </div>
   </div>

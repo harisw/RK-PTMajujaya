@@ -41,11 +41,11 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
-								<li><a href="items">Items</a></li>
-								<li><a href="delivery_order">Delivery Order</a></li>
-								<li><a href="quotation">Quotation</a></li>
+								<li><a href="{{url('/')}}/items">Items</a></li>
+								<li><a href="{{url('/')}}/delivery_order">Delivery Order</a></li>
+								<li><a href="{{url('/')}}/quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
-								<li><a href="proof_item">Buat Proof of Item Receipt</a></li>
+								<li><a href="{{url('/')}}/proof_item">Proof of Item Receipt</a></li>
 
 							</ul>
 						</div>

@@ -68,6 +68,8 @@ class CCreateQuotation extends Controller
           ListBarang::create($data);
         }
       }
+		
+		$request->session()->flash('status_quotation','Quotation sukses dibuat');
       return redirect('/quotation');
     }
 

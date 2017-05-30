@@ -41,10 +41,11 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
-								<li><a href="items">Kelola Items</a></li>
-								<li><a href="delivery_order">Delivery Order</a></li>
-								<li><a href="quotation">Quotation</a></li>
+								<li><a href="{{url('/')}}/items">Items</a></li>
+								<li><a href="{{url('/')}}/delivery_order">Delivery Order</a></li>
+								<li><a href="{{url('/')}}/quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
+								<li><a href="{{url('/')}}/proof_item">Proof of Item Receipt</a></li>
 							</ul>
 						</div>
 					</div>
@@ -54,6 +55,11 @@
           <div class="panel-body">
             <h4><i class="fa fa-university"></i> Daftar Barang</h4><hr>
             <div class=row><div class="col-md-6">
+				@if(session('status_t_barang'))
+				<div class="alert alert-success">
+  				{{session('status_t_barang')}}
+				</div>
+				@endif
               <a href="/items/create" class="btn btn-primary">
               <i class="fa fa-plus-circle"></i> Tambah Barang</a>
             </div><div class="col-md-2"></div><div class="col-md-4">            </div></div><br>
@@ -70,7 +76,7 @@
         </thead>
         @foreach($items as $m)
         <tr>
-          <td>{{ $m->id_barang }}</td>
+          <td>{{ $m->id_barang}}</td>
           <td>{{ $m->nama_barang }}</td>
           <td>{{ $m->harga }}</td>
           <td>{{ $m->stock }}</td>
