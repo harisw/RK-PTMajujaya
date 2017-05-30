@@ -45,6 +45,8 @@
 								<li><a href="delivery_order">Delivery Order</a></li>
 								<li><a href="quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
+								<li><a href="proof_item">Buat Proof of Item Receipt</a></li>
+
 							</ul>
 						</div>
 					</div>

@@ -46,7 +46,6 @@
 								<li><a href="quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
 								<li><a href="proof_item">Buat Proof of Item Receipt</a></li>
-
 							</ul>
 						</div>
 					</div>
@@ -54,7 +53,7 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
-            <h4><i class="fa fa-university"></i> Buat Payment Receipt</h4><hr>
+            <h4><i class="fa fa-university"></i> Buat Proof of Item Receipt</h4><hr>
             <div class=row><div class="col-md-6">
               <a href="/quotation/create" class="btn btn-primary">
               <i class="fa fa-plus-circle"></i> Tambah</a>
@@ -97,7 +96,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Payment Receipt</h4>
+        <h4 class="modal-title" id="myModalLabel">Proof Of Item Receipt</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -107,34 +106,29 @@
                     <address>
                         <strong>PT Maju Jaya</strong>
                         <br>
-                        Jl. Keputih No. 35
+                        Jalan Surabaya Selatan No 90
                         <br>
-                        Sukolilo, CA 90026
-                        <br>
-                        <abbr title="Phone">P:</abbr> (+62)85709802870
+                        <abbr title="Phone"></abbr> (+62)85709802870
                     </address>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                     <p>
-                        <em>Date: {{date("d-m-Y")}}</em>
-                    </p>
-                    <p>
-                        <em>Receipt #: 34522677W</em>
+                        Tanggal: 
                     </p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="text-center">
-                    <h1>Receipt</h1>
+                    <h2>Laporan Penerimaan Barang</h2>
+                    <h6><strong>Telah diterima barang-barang seperti tersebut dibawah ini :</strong></h6>
                 </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>#</th>
-                            <th class="text-center">Price</th>
-                            <th class="text-center">Total</th>
+                            <th>Nama Barang</th>
+                            <th class="text-center">Kuantitas</th>
+                            <th class="text-center">Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -142,36 +136,13 @@
                         <tr>
                             <td class="col-md-9"><em>{{$v->nama_barang}}</em></td>
                             <td class="col-md-1" style="text-align: center"> {{$v->jumlah_barang}} </td>
-                            <td class="col-md-1 text-center">Rp{{$v->harga}}</td>
-                            <td class="col-md-1 text-center">Rp{{$v->subtotal}}</td>
+                            <td class="col-md-2 text-center">Sudah Jadi</td>
                         </tr>
 											@endforeach
-
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td class="text-right">
-                                <p>
-                                    <strong>Subtotal: </strong>
-                                </p>
-                                <p>
-                                    <strong>Tax: </strong>
-                                </p>
-                            </td>
-                            <td class="text-center">
-                                <p>
-                                    <strong>Rp{{$m->total_harga}}</strong>
-                                </p>
-                                <p>
-                                    <strong>Rp 0</strong>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                            <td class="text-center text-danger"><h4><strong>Rp{{$m->total_harga}}</strong></h4></td>
+                         <tr>
+                            <td class="col-md-4"> </td>
+                            <td  class="col-md-5"><h6><strong>Yang Menerima :</strong></h6></td>
+                            <td  class="col-md-3"><h6></h6></td>
                         </tr>
                     </tbody>
                 </table>
@@ -182,7 +153,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" onClick="printDiv('Modal{{$m->id_quotation}}')" class="btn btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+        <button type="button" class="btn btn-primary" onclick="printDiv('Modal{{$m->id_quotation}}')"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
       </div>
     </div>
   </div>
