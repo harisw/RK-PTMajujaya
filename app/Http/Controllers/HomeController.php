@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MQuotation;
+use DB;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,10 @@ class HomeController extends Controller
         return redirect('/login');
 
       $quo = MQuotation::get();
-      return view('quotation.index', ['quotation' => $quo]);
+      $detail = DB::table('listbarang')->join('databarang', 'listbarang.barang_id', '=', 'databarang.id_barang')->get();
+      //dd($detail);
+      return view('quotation.index', [
+        'quotation' => $quo,
+        'detail' => $detail]);
     }
 }

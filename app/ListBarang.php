@@ -9,7 +9,7 @@ class ListBarang extends Model
 
     protected $table = 'ListBarang';
     protected $fillable = [
-      'barang_id', 'quotation_id'
+      'barang_id', 'quotation_id', 'subtotal'
     ];
     public $timestamps = true;
 

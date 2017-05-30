@@ -8,7 +8,7 @@ class CreateDataBarangTable extends Migration {
 	public function up()
 	{
 		Schema::create('DataBarang', function(Blueprint $table) {
-			$table->increments('id');
+			$table->increments('id_barang');
 			$table->timestamps();
 			$table->string('nama_barang', 255);
 			$table->integer('harga');

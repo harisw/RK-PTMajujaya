@@ -57,7 +57,7 @@
               <a href="/quotation/create" class="btn btn-primary">
               <i class="fa fa-plus-circle"></i> Tambah</a>
             </div><div class="col-md-2"></div><div class="col-md-4">            </div></div><br>
-        @if($quotation->count())
+
         <div class="table-responsive">
         <table class="table table-bordered table-striped
                       table-hover table-condensed tfix">
@@ -65,50 +65,151 @@
         <tr><td><b>ID</b></td>
             <td><b>Nama Quotation</b></td>
             <td><b>Nama Perusahaan</b></td>
-            <td colspan="2"><b>MENU</b></td></tr>
+            <td colspan="2"><b>MENU</b></td>
+					</tr>
         </thead>
+				<tbody>
         @foreach($quotation as $m)
         <tr>
-          <td>{{ $m->id }}</td>
+          <td>{{ $m->id_quotation }}</td>
           <td>{{ $m->nama_quotation }}</td>
           <td>{{ $m->nama_perusahaan }}</td>
-        <td align="center" width="30px">
-        <td align="center" width="30px">
-          <a href="#Modal{{ $m->id }}" data-toggle="modal" class="btn btn-primary"></a>
-        </td>
+        	<td align="center" >
+          	<a href="#Modal{{ $m->id }}" data-toggle="modal" class="btn btn-primary">Lihat</a>
+        	</td>
 				</tr>
 
-					<div class="modal fade" id="Modal{{ $m->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLongTitle">Detail Quotation</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<img src="img/quote.jpg" style="">
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cetak</button>
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
-								</div>
-							</div>
-						</div>
-					</div>
-
         @endforeach
+			</tbody>
         </table>
         </div>
-        @else
-         <div class="alert alert-warning">
-         <i class="fa fa-exclamation-triangle"></i> Data Dosen tidak Ada
-          </div>
-        @endif
-</div></div>
 
 
+			</div>
+		</div>
+
+		<!-- MODAL START -->
+		@foreach($quotation as $m)
+		<div class="modal fade" id="Modal{{ $m->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+			<!-- /. panel-heading -->
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+			<!-- <div class="panel-body"> -->
+				<!-- info row -->
+				<div class="row invoice-info">
+					<div class="col-sm-4 invoice-col">
+						Dari
+						<address>
+							<strong>PT Maju Jaya</strong><br>
+							Jalan Sasak 2 No.14 Kebon Jeruk<br>
+							Jakarta Barat, 11550<br>
+							Phone: (804) 123-5432<br>
+							Email: majujaya@maju.com
+						</address>
+					</div>
+					<!-- /.info pt maju jaya -->
+					<div class="col-sm-4 invoice-col">
+						Kepada
+						<address>
+							<strong>Perusahaan Westra</strong><br>
+							Jalan Bumi 3 No.19 Kemanggisan<br>
+							Surabaya, 61120<br>
+							Phone: (555) 539-1037<br>
+							Email: joko@westra.com
+						</address>
+					</div>
+					<!-- /.info customer -->
+					<div class="col-sm-4 invoice-col">
+						<!-- <b>Delivery Order #007612</b><br> -->
+								<b>Order #</b> <br>{{$m->id_quotation}}<br>
+								<b>Tanggal</b> <br>{{ date($m->created_at)}}<br>
+						<!-- <b>Order ID:</b> 4F3S8J<br>
+						<b>Tanggal:</b> 2/22/2014<br> -->
+					</div>
+					<!-- /.info  -->
+				</div>
+				<!-- /.row -->
+
+				<!-- Table row -->
+				<div class="row">
+					<div class="col-md-12 table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+							<tr>
+								<th width="80">Produk #</th>
+								<th>Produk</th>
+								<th width="80">Jumlah</th>
+								<th width="100">Subtotal</th>
+							</tr>
+							</thead>
+							<tbody>
+							@foreach($detail as $key)
+								@if($key->quotation_id == $m->id_quotation)
+								<tr>
+									<td class="text-center">{{ $key->id_barang }}</td>
+									<td>{{ $key->nama_barang }}</td>
+									<td class="text-center">{{ $key->jumlah_barang }}</td>
+									<td>{{ $key->subtotal }}</td>
+								</tr>
+								@endif
+							@endforeach
+							</tbody>
+						</table>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+
+				<div class="row">
+					<!-- accepted payments column -->
+					<!-- /.col -->
+					<div class="col-md-6">
+								<p class="lead">Tanggal {{date($m->created_at)}}</p>
+
+						<!-- <p class="lead">Tanggal 22 April 2017</p> -->
+						<div class="table-responsive">
+							<table class="table">
+								<!-- <tr>
+									<th style="width:50%">Subtotal:</th>
+									<td>Rp. 1.900.000,00</td>
+								</tr>
+								<tr>
+									<th>Tax (5%)</th>
+									<td>Rp. 95.000,00</td>
+								</tr> -->
+								<tr>
+											<th>Total:</th>
+											<td>Rp. {{$m->total_harga}}</td>
+									<!-- <th>Total:</th>
+									<td>Rp. 1.995.000,00</td> -->
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+				<div class="row no-print">
+					<div class="col-md-12 text-right">
+					<button type="button" onClick="printDiv('Modal{{ $m->id }}')" class="btn btn-default pull-left"/><i class="fa fa-print"></i> Cetak</button></a>
+					</div>
+				</div>
+			<!-- </div> -->
+			<!-- /. panel body -->
+		</div>
+			</div>
+		</div>
+		</div>
+			<!-- MODAL	 -->
+			@endforeach
 
         <div class="alert alert-panel" style="back">
 					<h3>Perlengkapan Berbagai Alat Kesehatan</h3>
@@ -118,6 +219,19 @@
 		</div>
 	</div>
 
+	<script type="text/javascript">
+	function printDiv(divName) {
+
+	var printContents = document.getElementById(divName).innerHTML;
+	 var originalContents = document.body.innerHTML;
+
+	 document.body.innerHTML = printContents;
+
+	 window.print();
+
+	 document.body.innerHTML = originalContents;
+ }
+	</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

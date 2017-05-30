@@ -8,10 +8,11 @@ class CreateListBarangTable extends Migration {
 	public function up()
 	{
 		Schema::create('ListBarang', function(Blueprint $table) {
-			$table->increments('id');
+			$table->increments('id_list');
 			$table->timestamps();
 			$table->integer('barang_id')->unsigned();
 			$table->integer('quotation_id')->unsigned();
+			$table->integer('subtotal');
 		});
 	}
 

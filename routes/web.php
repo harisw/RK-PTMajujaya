@@ -22,9 +22,7 @@ Route::get('/quotation', 'HomeController@quotation');
 Route::get('/quotation/create', 'CCreateQuotation@index');
 Route::post('/quotation', 'CCreateQuotation@store');
 
-Route::get('/payment_receipt', function () {
-    return view('payment_receipt');
-});
+Route::get('/payment_receipt', 'CCreatePaymentofReceipt@index');
 
 Route::get('/delivery_order', function () {
     return view('delivery_order');

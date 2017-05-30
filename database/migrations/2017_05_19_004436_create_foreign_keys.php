@@ -9,12 +9,12 @@ class CreateForeignKeys extends Migration {
 	public function up()
 	{
 		Schema::table('ListBarang', function(Blueprint $table) {
-			$table->foreign('barang_id')->references('id')->on('DataBarang')
+			$table->foreign('barang_id')->references('id_barang')->on('DataBarang')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
 		Schema::table('ListBarang', function(Blueprint $table) {
-			$table->foreign('quotation_id')->references('id')->on('Quotation')
+			$table->foreign('quotation_id')->references('id_quotation')->on('Quotation')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});

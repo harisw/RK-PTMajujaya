@@ -65,6 +65,7 @@
             <div class="form-group">
               {!! Form::label('barang'.$m->id, $m->nama_barang) !!}
               {!! Form::checkbox('barang'.$m->id, null, null, array('class' => 'form-control')) !!}
+							{!! Form::number('jumlah'.$m->id, null, array('class' => 'form-control')) !!}
             </div>
             @endforeach
 

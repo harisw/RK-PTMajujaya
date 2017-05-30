@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\MQuotation;
 use App\MItems;
 use App\ListBarang;
+
 class CCreateQuotation extends Controller
 {
     /**
@@ -37,17 +38,33 @@ class CCreateQuotation extends Controller
      */
     public function store(Request $request)
     {
-      $quotation = MQuotation::insertGetId(array(
-        'nama_perusahaan' => $request->get('nama_perusahaan'),
-        'nama_quotation' => $request->get('nama_quotation')
-      ));
+      $total = 0;
       $item = MItems::get();
       foreach($item as $i){
-        if($request->get('barang'.$i->id)){
-          ListBarang::insert([
-            'barang_id' => $i->id,
-            'quotation_id' => $quotation
-          ]);
+        if($request->get('barang'.$i->id_barang)){
+          $harga = MItems::select('harga')
+                  ->where('id_barang', '=', $i->id_barang)->get();
+          $subtotal[$i->id_barang] = $harga[0]->harga*$request->get('jumlah'.$i->id_barang);
+          $total += ($harga[0]->harga*$request->get('jumlah'.$i->id_barang));
+        }
+      }
+      //dd($total);
+      $data =array(
+        'nama_perusahaan' => $request->get('nama_perusahaan'),
+        'nama_quotation' => $request->get('nama_quotation'),
+        'total_harga' => $total
+      );
+      $quotation = MQuotation::create($data);
+
+      foreach($item as $i){
+        if($request->get('barang'.$i->id_barang)){
+          $data = array(
+            'barang_id' => $i->id_barang,
+            'quotation_id' => $quotation->id_barang,
+            'jumlah_barang' => $request->get('jumlah'.$i->id_barang),
+            'subtotal' => $subtotal[$i->id_barang]
+          );
+          ListBarang::create($data);
         }
       }
       return redirect('/quotation');
