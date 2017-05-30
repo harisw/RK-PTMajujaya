@@ -41,7 +41,7 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Home</a></li>
-								<li><a href="items">Items</a></li>
+								<li><a href="items">Kelola Items</a></li>
 								<li><a href="delivery_order">Delivery Order</a></li>
 								<li><a href="quotation">Quotation</a></li>
                 <li><a href="payment_receipt">Payment Receipt</a></li>
@@ -55,7 +55,7 @@
             <h4><i class="fa fa-university"></i> Daftar Barang</h4><hr>
             <div class=row><div class="col-md-6">
               <a href="/items/create" class="btn btn-primary">
-              <i class="fa fa-plus-circle"></i> Tambah</a>
+              <i class="fa fa-plus-circle"></i> Tambah Barang</a>
             </div><div class="col-md-2"></div><div class="col-md-4">            </div></div><br>
         @if($items->count())
         <div class="table-responsive">
@@ -70,21 +70,21 @@
         </thead>
         @foreach($items as $m)
         <tr>
-          <td>{{ $m->id }}</td>
+          <td>{{ $m->id_barang }}</td>
           <td>{{ $m->nama_barang }}</td>
           <td>{{ $m->harga }}</td>
           <td>{{ $m->stock }}</td>
         <td align="center" width="30px">
-        <a href="/items/{{$m->id}}/edit" class="btn btn-warning btn-sm"
-        role="button"><i class="fa fa-pencil-square"></i> Edit</a></td>
-        <td align="center" width="30px">
+        <a href="/items/{{$m->id_barang}}/edit" class="btn btn-warning btn-sm"
+        role="button"><i class="fa fa-pencil-square"></i> Update Barang</a></td>
+        <!-- <td align="center" width="30px">
         {!! Form::open(array('route' => array('items.destroy', $m->nip),
                              'method' => 'delete',
                              'style' => 'display:inline')) !!}
         <button class='btn btn-sm btn-danger delete-btn' type='submit'>
         <i class='fa fa-times-circle'></i> Delete </button>
         {!! Form::close() !!}
-        </td>
+        </td> -->
          </tr>
         @endforeach
         </table>
@@ -95,9 +95,9 @@
           </div>
         @endif
         </div></div>
-        <div class="alert alert-panel" style="back">
+        <!-- <div class="alert alert-panel" style="back">
 					<h3>Perlengkapan Berbagai Alat Kesehatan</h3>
-				</div>
+				</div> -->
 			</div>
 			<div class="col-md-1"></div>
 		</div>

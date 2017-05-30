@@ -57,9 +57,10 @@ class CManageItems extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_barang)
     {
-        //
+        $item = MItems::where('id_barang', '=', $id_barang)->get();
+        return view('items.edit', compact('item'));
     }
 
     /**
@@ -69,9 +70,14 @@ class CManageItems extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_barang)
     {
-        //
+        $item = MItems::where('id_barang', '=', $id_barang)
+                        ->update(['nama_barang' => $request->get('nama_barang'),
+                                  'harga' => $request->get('harga'),
+                                  'stock' => $request->get('stock')]);
+        //$item->update($request->all());
+        return redirect('/items');
     }
 
     /**

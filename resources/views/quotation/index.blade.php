@@ -120,7 +120,7 @@
 					<div class="col-sm-4 invoice-col">
 						Kepada
 						<address>
-							<strong>Perusahaan Westra</strong><br>
+							<strong>{{$m->nama_perusahaan}}</strong><br>
 							Jalan Bumi 3 No.19 Kemanggisan<br>
 							Surabaya, 61120<br>
 							Phone: (555) 539-1037<br>
@@ -230,7 +230,7 @@
 
 	 window.print();
 
-	 document.body.innerHTML = originalContents;
+	 location.reload(true);
  }
 	</script>
 
