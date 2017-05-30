@@ -55,12 +55,13 @@ class CCreateQuotation extends Controller
         'total_harga' => $total
       );
       $quotation = MQuotation::create($data);
-
+      //dd($quotation);
       foreach($item as $i){
+        //dd($request->get('jumlah'.$i->id_barang));
         if($request->get('barang'.$i->id_barang)){
           $data = array(
             'barang_id' => $i->id_barang,
-            'quotation_id' => $quotation->id_barang,
+            'quotation_id' => $quotation->id,
             'jumlah_barang' => $request->get('jumlah'.$i->id_barang),
             'subtotal' => $subtotal[$i->id_barang]
           );

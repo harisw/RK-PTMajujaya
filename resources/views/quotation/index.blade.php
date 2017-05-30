@@ -75,7 +75,7 @@
           <td>{{ $m->nama_quotation }}</td>
           <td>{{ $m->nama_perusahaan }}</td>
         	<td align="center" >
-          	<a href="#Modal{{ $m->id }}" data-toggle="modal" class="btn btn-primary">Lihat</a>
+          	<a href="#Modal{{ $m->id_quotation }}" data-toggle="modal" class="btn btn-primary">Lihat</a>
         	</td>
 				</tr>
 
@@ -90,7 +90,8 @@
 
 		<!-- MODAL START -->
 		@foreach($quotation as $m)
-		<div class="modal fade" id="Modal{{ $m->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		<h3></h3>
+		<div class="modal fade" id="Modal{{ $m->id_quotation }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 			<!-- /. panel-heading -->
 			<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -130,7 +131,7 @@
 					<div class="col-sm-4 invoice-col">
 						<!-- <b>Delivery Order #007612</b><br> -->
 								<b>Order #</b> <br>{{$m->id_quotation}}<br>
-								<b>Tanggal</b> <br>{{ date($m->created_at)}}<br>
+								<b>Tanggal</b> <br>{{ date("d/m/Y", $m->created_at->timestamp)}}<br>
 						<!-- <b>Order ID:</b> 4F3S8J<br>
 						<b>Tanggal:</b> 2/22/2014<br> -->
 					</div>
@@ -172,7 +173,7 @@
 					<!-- accepted payments column -->
 					<!-- /.col -->
 					<div class="col-md-6">
-								<p class="lead">Tanggal {{date($m->created_at)}}</p>
+								<p class="lead">Tanggal {{date("d/m/Y", $m->created_at->timestamp)}}</p>
 
 						<!-- <p class="lead">Tanggal 22 April 2017</p> -->
 						<div class="table-responsive">
@@ -199,7 +200,7 @@
 				<!-- /.row -->
 				<div class="row no-print">
 					<div class="col-md-12 text-right">
-					<button type="button" onClick="printDiv('Modal{{ $m->id }}')" class="btn btn-default pull-left"/><i class="fa fa-print"></i> Cetak</button></a>
+					<button type="button" onClick="printDiv('Modal{{ $m->id_quotation }}')" class="btn btn-default pull-left"/><i class="fa fa-print"></i> Cetak</button></a>
 					</div>
 				</div>
 			<!-- </div> -->
